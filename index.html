@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Impacto - Sistema de Escala Híbrida</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    </noscript>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Dimpple Analytics -->
+    <script type="text/javascript">
+        (function (g, u, r, i, d, e, a) {
+            g.DimppleAnalyticsObject = d; if (!(d in g)) {
+                g[d] = function () {
+                    g[d].q.push(arguments);
+                }; g[d].q = [];
+            } g[d].l = (new Date()).getTime(); var e = u.createElement(r);
+            e.src = i; e.async = true; var a = u.getElementsByTagName(r)[0]; a.parentNode.insertBefore(e, a)
+        })(window, document, 'script', '//api.dimpple.com/public/js/analytics.js?trk=11314.zTEMMTQ.725aa855', 'trk');
+    </script>
+</head>
+
+<body>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-track">
+            <div class="progress-bar" id="progress_bar"></div>
+        </div>
+        <div class="progress-text" id="progress_text">DIAGNÓSTICO</div>
+    </div>
+
+    <main id="quiz_container">
+
+        <!-- TELA 0 — ABERTURA (MECANISMO CLARO) -->
+        <section id="screen_00_mechanism" data-step="0" class="quiz-screen is-active">
+            <div class="content-wrapper">
+                <h1 class="headline" style="color: #0F172A;">O problema do consignado não é vender.<br>
+                    É quem fica… e quem some.</h1>
+
+                <h2 class="subheadline">Toda operação de consignado tem pessoas diferentes.<br>
+                    O prejuízo começa quando você trata todo mundo do mesmo jeito.</h2>
+
+                <div class="mechanism-list" style="margin: 24px 0;">
+                    <p style="margin-bottom: 8px;">👉 Responda 3 perguntas rápidas</p>
+                    <p style="margin-bottom: 8px;">👉 Veja onde sua base está vazando</p>
+                    <p style="margin-bottom: 0;">👉 Decida se faz sentido continuar assim</p>
+                </div>
+
+                <button id="btn_start_diagnosis" class="btn-primary" onclick="nextScreen()">▶ Ver meu diagnóstico
+                    agora</button>
+            </div>
+        </section>
+
+        <!-- BLOCO 1 — PESSOAS (PRIMEIRO “SIM” RÁPIDO) -->
+        <!-- PERGUNTA 1 — COMPORTAMENTO REAL -->
+        <section id="screen_q1_comportamento" data-step="1" class="quiz-screen">
+            <div class="content-wrapper">
+                <h3 class="question-title">Na prática, suas revendedoras são mais assim:</h3>
+                <div class="options-grid">
+                    <button id="btn_q1_opt1" class="option-btn"
+                        onclick="selectOption('P1_comportamento', 'Poucas vendem sempre e seguram tudo')">Poucas vendem
+                        sempre e seguram tudo</button>
+                    <button id="btn_q1_opt2" class="option-btn"
+                        onclick="selectOption('P1_comportamento', 'Algumas vendem bem, outras somem')">Algumas vendem
+                        bem, outras somem</button>
+                    <button id="btn_q1_opt3" class="option-btn"
+                        onclick="selectOption('P1_comportamento', 'Muitas entram animadas e param rápido')">Muitas
+                        entram animadas e param rápido</button>
+                    <button id="btn_q1_opt4" class="option-btn"
+                        onclick="selectOption('P1_comportamento', 'Nunca parei pra olhar desse jeito')">Nunca parei pra
+                        olhar desse jeito</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSIGHT 1 — REVELAÇÃO SIMPLES (SEM PESO) -->
+        <section id="screen_insight1" data-step="insight" class="quiz-screen">
+            <div class="content-wrapper">
+                <span class="insight-badge" style="background:#DBEAFE; color:#1E40AF;">🟦 INSIGHT</span>
+                <h3 class="insight-title">Você já tem uma Equipe Híbrida.<br>Só não percebeu ainda.</h3>
+
+                <p style="font-weight: 600; margin-bottom: 12px;">Em toda base de consignado acontece isso:</p>
+                <ul class="clean-list">
+                    <li>tem gente que vende todo mês a mesma coisa</li>
+                    <li>tem gente que vende muito e depois para</li>
+                    <li>tem gente que acelera forte (ou dá trabalho)</li>
+                </ul>
+
+                <p>Isso é normal.<br>
+                    O erro não é ter esses perfis.<br>
+                    O erro é tratar todo mundo igual.</p>
+
+                <div
+                    style="background: #EFF6FF; padding: 16px; border-radius: 8px; border-left: 4px solid #1D4ED8; margin-top: 24px;">
+                    <p style="margin:0; font-weight: 600; color: #1E3A8A;">👉 É aqui que o desgaste começa.</p>
+                </div>
+
+                <button id="btn_insight1_continue" class="btn-primary" onclick="nextScreen()">Continuar</button>
+            </div>
+        </section>
+
+        <!-- BLOCO 2 — RETENÇÃO (GENTE + TEMPO) -->
+        <!-- PERGUNTA 2 — ENTRA E SAI -->
+        <section id="screen_q2_entra_sai" data-step="2" class="quiz-screen">
+            <div class="content-wrapper">
+                <h3 class="question-title">Nos últimos 30 dias, sua base:</h3>
+                <div class="options-grid">
+                    <button id="btn_q2_opt1" class="option-btn"
+                        onclick="selectOption('P2_entra_sai', 'Quase não mudou')">Quase não mudou</button>
+                    <button id="btn_q2_opt2" class="option-btn"
+                        onclick="selectOption('P2_entra_sai', 'Perdeu algumas pessoas')">Perdeu algumas pessoas</button>
+                    <button id="btn_q2_opt3" class="option-btn"
+                        onclick="selectOption('P2_entra_sai', 'Entrou muita gente e saiu muita gente')">Entrou muita
+                        gente e saiu muita gente</button>
+                    <button id="btn_q2_opt4" class="option-btn"
+                        onclick="selectOption('P2_entra_sai', 'Nem sei dizer direito')">Nem sei dizer direito</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSIGHT 2 — EXPLICAÇÃO DO DIA A DIA -->
+        <section id="screen_insight2" data-step="insight" class="quiz-screen">
+            <div class="content-wrapper">
+                <span class="insight-badge" style="background:#FEF2F2; color:#B91C1C;">🟥 ALERTA</span>
+                <h3 class="insight-title">Vamos falar da vida real.</h3>
+
+                <p>Toda vez que uma revendedora sai, você precisa:</p>
+                <ul class="clean-list">
+                    <li>explicar tudo de novo</li>
+                    <li>acompanhar alguém do zero</li>
+                    <li>responder as mesmas dúvidas</li>
+                    <li>gastar energia pra recomeçar</li>
+                </ul>
+
+                <p>Isso não aparece no sistema.<br>Mas aparece no seu cansaço.</p>
+
+                <div style="margin: 20px 0; font-weight: 700; color: #B91C1C;">
+                    👉 Você não está crescendo.<br>👉 Está repondo gente.
+                </div>
+
+                <button id="btn_insight2_continue" class="btn-primary" onclick="nextScreen()">Continuar</button>
+            </div>
+        </section>
+
+        <!-- BLOCO 3 — DECISÃO HUMANA (ONDE TUDO COMEÇA) -->
+        <!-- PERGUNTA 3 — COMO VOCÊ DECIDE -->
+        <section id="screen_q3_criterio" data-step="3" class="quiz-screen">
+            <div class="content-wrapper">
+                <h3 class="question-title">Hoje, como você decide quem recebe mais responsabilidade?</h3>
+                <div class="options-grid">
+                    <button id="btn_q3_opt1" class="option-btn"
+                        onclick="selectOption('P3_criterio', 'Pela conversa / feeling')">Pela conversa /
+                        feeling</button>
+                    <button id="btn_q3_opt2" class="option-btn"
+                        onclick="selectOption('P3_criterio', 'Pelo histórico de cabeça')">Pelo histórico “de
+                        cabeça”</button>
+                    <button id="btn_q3_opt3" class="option-btn"
+                        onclick="selectOption('P3_criterio', 'Pelo sistema + intuição')">Pelo sistema +
+                        intuição</button>
+                    <button id="btn_q3_opt4" class="option-btn"
+                        onclick="selectOption('P3_criterio', 'No dia, conforme a situação')">No dia, conforme a
+                        situação</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSIGHT 3 — REFERÊNCIAS (EXPLICADAS COMO HISTÓRIA) -->
+        <section id="screen_insight3" data-step="insight" class="quiz-screen">
+            <div class="content-wrapper">
+                <span class="insight-badge" style="background:#FEF9C3; color:#A16207;">🟨 REFERÊNCIAS</span>
+                <h3 class="insight-title">Quem escala, separa pessoas por comportamento.</h3>
+
+                <p style="margin-bottom: 20px;">Empresas grandes já entenderam isso faz tempo.</p>
+
+                <div class="reference-item" style="margin-bottom: 20px;">
+                    <p style="font-weight: 800; color: #1E293B; margin-bottom: 4px;">• Grupo Boticário / Eudora</p>
+                    <p style="margin-bottom: 0;">Eles não tratam todas as consultoras iguais.<br>
+                        Usam dados para saber quem precisa de apoio e quem anda sozinha.</p>
+                </div>
+
+                <div class="reference-item" style="margin-bottom: 20px;">
+                    <p style="font-weight: 800; color: #1E293B; margin-bottom: 4px;">• Rommanel</p>
+                    <p style="margin-bottom: 0;">Transforma revendedoras em consultoras.<br>
+                        Isso aumenta o compromisso e faz as pessoas ficarem mais tempo.</p>
+                </div>
+
+                <div class="reference-item" style="margin-bottom: 20px;">
+                    <p style="font-weight: 800; color: #1E293B; margin-bottom: 4px;">• Grupo Hope</p>
+                    <p style="margin-bottom: 0;">Investe em processo e escolha certa<br>
+                        para reduzir erro e rotatividade.</p>
+                </div>
+
+                <div style="background: #F1F5F9; padding: 16px; border-radius: 8px; margin-top: 24px;">
+                    <p style="font-weight: 700; color: #0F172A; margin: 0;">👉 Todas fazem a mesma coisa:<br>tratam
+                        pessoas diferentes de forma diferente.</p>
+                    <p style="margin-top: 8px; color: #475569;">Isso é Equipe Híbrida.</p>
+                </div>
+
+                <button id="btn_insight3_calculate" class="btn-primary" onclick="nextScreen()">Continuar</button>
+            </div>
+        </section>
+
+        <!-- TELA “CALCULANDO…” -->
+        <section id="screen_calculating" class="quiz-screen">
+            <div class="content-wrapper" style="text-align:center; padding: 48px 24px;">
+                <h2 class="headline" style="font-size: 1.5rem; margin-bottom: 24px;">Processando seu padrão...</h2>
+
+                <div class="calc-progress-wrapper">
+                    <div class="calc-progress-fill" id="calc_fill"></div>
+                </div>
+
+                <div class="calc-steps" id="calc_text_step"
+                    style="height:40px; margin-top:16px; color:var(--text-muted); font-weight:600;">
+                    entendendo seu padrão de base...
+                </div>
+            </div>
+        </section>
+
+        <!-- TELA DE RESULTADO — IMPACTO SEM CONFORTO -->
+        <section id="screen_result" data-step="result" class="quiz-screen">
+            <div class="content-wrapper">
+                <h1 class="headline" style="color: #0F172A; font-size: 1.8rem;">O que ficou claro pelo seu padrão:</h1>
+
+                <!-- Diagnostico Direto -->
+                <div class="result-block" style="margin-bottom: 24px;">
+                    <ul class="clean-list">
+                        <li>sua base não é bagunçada por acaso</li>
+                        <li>pessoas diferentes precisam de regras diferentes</li>
+                        <li>tratar todo mundo igual gera desgaste e perda</li>
+                    </ul>
+                </div>
+
+                <div
+                    style="background: #FEF2F2; padding: 16px; border-radius: 8px; border-left: 4px solid #EF4444; margin-bottom: 24px;">
+                    <p style="margin-bottom: 8px; font-weight: 600; color: #991B1B;">👉 Parte da sua base sustenta o
+                        negócio</p>
+                    <p style="margin-bottom: 8px; font-weight: 600; color: #991B1B;">👉 Outra parte consome sua energia
+                    </p>
+                    <p style="margin-bottom: 0; font-weight: 600; color: #991B1B;">👉 E isso não se resolve com mais
+                        volume</p>
+                </div>
+
+                <!-- Revelação Final -->
+                <div class="key-revelation" style="text-align: center; margin: 32px 0;">
+                    <h2 style="font-size: 1.2rem; font-weight: 800; color: #0F172A; margin-bottom: 12px;">Você não
+                        precisa de mais revendedoras.</h2>
+                    <p style="font-size: 1.1rem; color: #475569;">Precisa organizar quem fica, quem cresce e quem
+                        acelera.</p>
+                    <p style="font-size: 1.2rem; font-weight: 800; color: var(--primary); margin-top: 12px;">Isso é
+                        Equipe Híbrida.</p>
+                </div>
+
+                <!-- CTA Final Checkout -->
+                <div class="final-offer-box"
+                    style="background: #1E293B; color: white; padding: 24px; border-radius: 16px; margin-top: 32px; text-align: center;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: white;">Você não precisa
+                        vender mais.<br>Precisa decidir melhor antes de assumir risco.</h3>
+
+                    <p style="color: #94A3B8; margin-bottom: 12px; font-size: 0.95rem;">
+                        Nada aqui é sobre estoque.<br>
+                        É sobre gente.
+                    </p>
+
+                    <p style="color: white; font-weight: 600; margin-bottom: 20px;">
+                        Quem fica.<br>
+                        Quem cresce.<br>
+                        E quem drena energia.
+                    </p>
+
+                    <button id="btn_checkout_final" class="btn-primary" style="background: #10B981; margin-top: 0;"
+                        onclick="window.location.href='https://pay.kiwify.com.br/DISTRITO_HIBRIDO_CHECKOUT'">👉 Aplicar
+                        o Sistema de Escala Híbrida agora</button>
+
+                    <p style="font-size: 0.75rem; color: #64748B; margin-top: 12px; font-weight: 600;">
+                        Acesso imediato • Simples de aplicar • Sem mensalidade
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
